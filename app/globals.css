@@ -13,6 +13,7 @@
   text-orientation: upright;
 }
 
+
 html,
 body {
   color: black;
@@ -20,4 +21,16 @@ body {
   font-family: "I.Ming";
   margin: auto;
   padding: auto;
+}
+
+@media print {
+  .print_hide {
+    display: none;
+    visibility: hidden;
+  }
+
+  .writing-direction-rl,
+  .writing-direction-lr {
+    writing-mode: horizontal-tb;
+  }
 }
