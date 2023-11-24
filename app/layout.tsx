@@ -15,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className='m-3 text-xl'>
-      <body className={"writing-direction-rl"}>{children}</body>
+    <html lang="en" className='m-0 text-xl' style={{ direction: 'rtl' }}>
+      <body className={""}>{children}</body>
     </html>
   )
 }

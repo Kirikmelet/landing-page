@@ -3,18 +3,7 @@
 @tailwind utilities;
 @import url("./css/i-ming_font.css");
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-  }
-}
-
 .writing-direction-rl {
-
   writing-mode: vertical-rl;
   text-orientation: upright;
 }

@@ -55,8 +55,14 @@ export default function Home() {
   const day = Math.floor(date.getDate())
   const hour = date.getHours()
   const minute = date.getMinutes()
-  return (
-    <main className="flex flex-col gap-2 writing-direction-rl overflow-hidden">
+  return <>
+    <form className="relative top-2 left-0 right-0 m-0" action="https://www.google.com/search" role="searchbox">
+      <div className="pb-10 flex sm:flex-row flex-col-reverse gap-2 justify-center align-middle w-screen">
+        <button type="submit" className="border-solid border-black border-2 text-lg">検索する</button>
+        <input type="search" name="q" autoComplete="false" style={{ direction: "ltr" }} className="text-sm h-max left-0 right-0"></input>
+      </div>
+    </form>
+    <main className="flex flex-col gap-2 writing-direction-rl overflow-y-hidden absolute bottom-2 left-2 right-2 sm:top-14 top-20">
       <h1 className='text-3xl font-bold pl-6'>{getGreetingDay(date)}トロイさん。</h1>
       <Div name={"日付と時間"}>
         <p>今囘日付は<span className="text-xl">{number2kanji(year)}年{number2kanji(month)}月{number2kanji(day)}日</span>です。</p>
@@ -98,5 +104,5 @@ export default function Home() {
       {/* <GetPoetry /> */}
       <iframe className="flex-grow" src="https://www.youtube.com/embed/videoseries?si=4oNgAIWD69ZV_NhB&amp;list=PLXII8OAX5tjG02VeEx6z0XHU-aj1V0ppF" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
     </main >
-  )
+  </>
 }
