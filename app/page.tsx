@@ -4,8 +4,9 @@ import { fetchWeatherApi } from "openmeteo";
 import WeatherDiv from "./components/weather";
 import WebsiteList from "./components/website_list";
 import { number2kanji } from "@geolonia/japanese-numeral";
-import { useState, useEffect } from "react"
+import { useState, useEffect, MutableRefObject } from "react"
 import useSWR from "swr";
+import { useRef } from "react";
 import Image from "next/image";
 import maidenJpg from "./maiden.jpg"
 
@@ -42,6 +43,7 @@ function GetPoetry(): JSX.Element {
   </p>
 }
 
+
 export default function Home() {
   const [date, setDate] = useState(new Date())
   useEffect(() => {
@@ -55,18 +57,22 @@ export default function Home() {
   const day = Math.floor(date.getDate())
   const hour = date.getHours()
   const minute = date.getMinutes()
+  function horizontalScroll(ev: React.WheelEvent<HTMLElement>) {
+    let target = (ev.currentTarget! as HTMLElement)
+    target.scrollLeft -= ev.deltaY
+  }
   return <>
     <form className="relative top-2 left-0 right-0 m-0" action="https://www.google.com/search" role="searchbox">
       <div className="pb-10 flex sm:flex-row flex-col-reverse gap-2 justify-center align-middle w-screen">
-        <input type="search" name="q" autoComplete="false" style={{ direction: "ltr" }} className="text-sm h-max left-0 right-0"></input>
+        <input type="search" name="q" autoComplete="false" style={{ direction: "ltr" }} className="text-sm h-max left-0 right-0 px-2"></input>
         <button type="submit" className="border-solid border-black border-2 text-lg">検索する</button>
       </div>
     </form>
-    <main className="flex flex-col gap-2 writing-direction-rl overflow-y-hidden absolute bottom-2 left-2 right-2 sm:top-14 top-20">
+    <main onWheel={horizontalScroll} id="main" className="flex flex-col gap-2 writing-direction-rl overflow-y-hidden absolute bottom-2 left-2 right-2 sm:top-14 top-20">
       <h1 className='text-3xl font-bold pl-6'>{getGreetingDay(date)}トロイさん。</h1>
       <Div name={"日付と時間"}>
         <p>今囘日付は<span className="text-xl">{number2kanji(year)}年{number2kanji(month)}月{number2kanji(day)}日</span>です。</p>
-        <p>今囘時間は<span className="text-2xl">{number2kanji(hour)}時{number2kanji(minute)}分</span>です</p>
+        <p>今囘時間は<span className="text-2xl">{number2kanji(hour)}時{number2kanji(minute)}分</span>です。</p>
       </Div>
       <WeatherDiv></WeatherDiv>
       <WebsiteList name="學究的ウェブサイト" items={[
@@ -102,7 +108,11 @@ export default function Home() {
       ]}></WebsiteList>
       {/* <h2 className="text-3xl">詩經之名言</h2> */}
       {/* <GetPoetry /> */}
-      <iframe className="flex-grow" src="https://www.youtube.com/embed/videoseries?si=4oNgAIWD69ZV_NhB&amp;list=PLXII8OAX5tjG02VeEx6z0XHU-aj1V0ppF" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+      {/* <iframe className="flex-grow" src="https://www.youtube.com/embed/videoseries?si=4oNgAIWD69ZV_NhB&amp;list=PLXII8OAX5tjG02VeEx6z0XHU-aj1V0ppF" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe> */}
+      <p className="text-2xl">
+        生之為人，須知生命乃是一段旅程，其路艱難曲折，須以坦然心態，包容萬物。明智者知曉在生命之舟上，須順應自然，不可強求，不貪功名利祿，須以平和之心，淡泊名利，才能領悟生活的真諦。
+        《老子》
+      </p>
     </main >
   </>
 }

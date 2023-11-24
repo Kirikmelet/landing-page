@@ -8,6 +8,11 @@
   text-orientation: upright;
 }
 
+.writing-direction-lr {
+  writing-mode: horizontal-tb;
+  text-orientation: upright;
+}
+
 html,
 body {
   color: black;

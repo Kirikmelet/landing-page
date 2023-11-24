@@ -67,20 +67,23 @@ export default function WeatherDiv() {
     const daily_weather_max_temp = daily_weather.variables(0)!.valuesArray()![0]
     const daily_weather_min_temp = daily_weather.variables(1)!.valuesArray()![0]
     const daily_weather_precip = daily_weather.variables(2)!.valuesArray()![0]
-    const convert_min_temp_to_string = (temp: number): string => {
+    const normalize_temperature = (temp: number): string => {
         if (temp < 0) {
-            return "零下" + number2kanji(Math.round(temp + 1))
-        } else {
+            return "零下" + number2kanji(Math.round(Math.abs(temp)))
+        } else if (temp == 0) {
+            return "零"
+        }
+        else {
             return number2kanji(Math.round(temp))
         }
     }
     return (<Div name={"天氣"}>
         <p>
             今日の天氣は<span className="font-semibold text-xl">「{getWMOCodeText(current_weather_code)}」</span>
-            と氣溫は<span className="font-semibold text-xl">{number2kanji(Math.round(current_weather_temp))}度</span>です。
-            <span className="font-semibold">最高氣溫</span>は<span className="font-semibold text-l">{number2kanji(Math.round(daily_weather_max_temp))}度</span>
+            と氣溫は<span className="font-semibold text-xl">{normalize_temperature(current_weather_temp)}度</span>です。
+            <span className="font-semibold">最高氣溫</span>は<span className="font-semibold text-l">{normalize_temperature(daily_weather_max_temp)}度</span>
             と
-            <span className="font-semibold">最低氣溫</span>は<span className="font-semibold text-l">{convert_min_temp_to_string(daily_weather_min_temp)}度</span>
+            <span className="font-semibold">最低氣溫</span>は<span className="font-semibold text-l">{normalize_temperature(daily_weather_min_temp)}度</span>
             です。
             そして、<span className="font-semibold">降水確率</span>は<span className="font-semibold text-l">{number2kanji(daily_weather_precip)}割</span>
             です。
