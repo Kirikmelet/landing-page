@@ -75,10 +75,10 @@ export default function Home() {
         <p>今囘時間は<span className="text-2xl">{number2kanji(hour)}時{number2kanji(minute)}分</span>です。</p>
       </Div>
       <WeatherDiv></WeatherDiv>
-      <WebsiteList name="學究的ウェブサイト" items={[
+      <WebsiteList name="學習のウェブサイト" items={[
         { url: "https://jisho.org", name: "日本語辭書" },
         { url: "https://mdbg.net", name: "華語詞典" },
-        { url: "https://czyzd.com/", name: "潮州詞典" },
+        { url: "https://mogher.com/", name: "潮州話詞典" },
         { url: "https://dict.cc/", name: "ドイツ語辭書" },
         { url: "https://khanacademy.org/", name: "カーンアカデミー" },
       ]}></WebsiteList>
