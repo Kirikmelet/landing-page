@@ -23,6 +23,11 @@ body {
   padding: auto;
 }
 
+.bg-bisque {
+
+  background-color: bisque;
+}
+
 @media print {
   .print_hide {
     display: none;

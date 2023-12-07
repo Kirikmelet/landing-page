@@ -15,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className='m-0 text-xl'>
-      <body className={""}>{children}</body>
+    <html lang="en" className='m-0 text-xl bg-bisque absolute top-0 bottom-0 left-0 right-0'>
+      <body className={"m-0 text-xl bg-bisque absolute top-0 bottom-0 left-0 right-0"}>{children}</body>
     </html>
   )
 }

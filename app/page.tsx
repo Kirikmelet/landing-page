@@ -62,13 +62,15 @@ export default function Home() {
     target.scrollLeft -= ev.deltaY
   }
   return <>
-    <form className="pr:hidden relative top-2 left-0 right-0 m-0" action="https://www.google.com/search" role="searchbox">
-      <div className="pb-10 flex sm:flex-row flex-col-reverse gap-2 justify-center align-middle w-screen">
-        <input type="search" name="q" autoComplete="false" style={{ direction: "ltr" }} className="text-sm h-max left-0 right-0 px-2"></input>
-        <button type="submit" className="border-solid border-black border-2 text-lg">検索する</button>
-      </div>
-    </form>
-    <main onWheel={horizontalScroll} id="main" className=" pr:block pr:text-base flex flex-col gap-2 writing-direction-rl overflow-y-hidden absolute bottom-2 left-2 right-2 sm:top-14 top-20">
+    <search className="bg-transparent">
+      <form className="pr:hidden relative top-2 left-0 right-0 m-0" action="https://www.google.com/search" role="searchbox">
+        <div className="pb-10 flex sm:flex-row flex-col-reverse gap-2 justify-center align-middle w-screen">
+          <input type="search" name="q" autoComplete="false" style={{ direction: "ltr" }} className="text-sm h-max left-0 right-0 px-2"></input>
+          <button type="submit" className="border-solid border-black border-2 text-lg">検索する</button>
+        </div>
+      </form>
+    </search>
+    <main onWheel={horizontalScroll} id="main" className=" pr:block pr:text-base flex flex-col gap-2 writing-direction-rl overflow-y-hidden absolute bottom-2 left-2 right-2 sm:top-14 top-20 bg-bisque">
       <h1 className='text-3xl font-bold pl-6'>{getGreetingDay(date)}トロイさん。</h1>
       <Div name={"日付と時間"}>
         <p>今囘日付は<span className="text-xl">{number2kanji(year)}年{number2kanji(month)}月{number2kanji(day)}日</span>です。</p>
